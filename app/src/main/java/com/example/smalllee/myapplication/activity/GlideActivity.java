@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
+import com.bumptech.glide.integration.okhttp.OkHttpGlideModule;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -31,7 +32,7 @@ public class GlideActivity extends AppCompatActivity {
 
     public void loadImage(View view) {
         Glide.with(this).load(URL)
-                .transform(new RoundTransformation(this,50))
+                .animate(R.anim.image_load) //指定加载动画，只在第一次加载的时候有效果
                 .into(imageView);
     }
 }
