@@ -6,33 +6,42 @@ import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 public class ScrollActivity extends AppCompatActivity {
-
+    private static final String TAG = "ScrollActivity";
     private View titleView;
     private MyScrollView scrollView;
+    private LinearLayout mParent;
+    private View submitView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scroll);
-        LinearLayout mParent = findViewById(R.id.llparent);
+        mParent = findViewById(R.id.llparent);
         titleView = findViewById(R.id.tv_title);
         scrollView = findViewById(R.id.scrollview);
-        final int topPadding = getScreenHeight() - DensityUtil.dp2px(this,200) - getStatusBarHeight();
+        submitView = findViewById(R.id.view_submit);
+        final int topPadding = getScreenHeight() - DensityUtil.dp2px(this,230) - getStatusBarHeight();
         mParent.setPadding(0,topPadding,0,0);
+        Log.d(TAG, "onCreate: " + topPadding);
+        scrollView.setTopPosition(topPadding);
         scrollView.setOnSrollChangedListener(new MyScrollView.ScrollChangedListener() {
             @Override
             public void onScollChanged(int t) {
                 System.out.println("top====="+(float)t/topPadding);
                 float result = (float)t/topPadding;
+                scrollView.setTopPosition(topPadding - t);
                 if (result > 0.8) {
                     titleExit();
                 } else {
@@ -93,5 +102,22 @@ private boolean isExtiEnd;
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    public void setMarginOne(View view) {
+        ViewGroup.LayoutParams layoutParams = submitView.getLayoutParams();
+        layoutParams.height = DensityUtil.dp2px(this,200);
+        submitView.setLayoutParams(layoutParams);
+        final int topPadding = getScreenHeight() - submitView.getLayoutParams().height - DensityUtil.dp2px(this,30) - getStatusBarHeight();
+        Log.d(TAG, "setMarginOne: " + topPadding);
+        mParent.setPadding(0,topPadding,0,0);
+    }
+    public void setMarginTwo(View view) {
+        ViewGroup.LayoutParams layoutParams = submitView.getLayoutParams();
+        layoutParams.height = DensityUtil.dp2px(this,150);
+        submitView.setLayoutParams(layoutParams);
+        final int topPadding = getScreenHeight() - submitView.getLayoutParams().height - DensityUtil.dp2px(this,30) -  getStatusBarHeight();
+        Log.d(TAG, "setMarginTwo: " + topPadding);
+        mParent.setPadding(0,topPadding,0,0);
     }
 }
