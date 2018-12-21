@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.smalllee.myapplication.ScrollActivity">
-    <LinearLayout
+    <com.example.smalllee.myapplication.view.MainLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -20,13 +20,19 @@
             android:gravity="center"
 
             />
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="主内容"
-            android:textSize="30sp"
+            android:text="设置margin1"
+            android:onClick="setMarginOne"
             />
-    </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置margin2"
+            android:onClick="setMarginTwo"
+            />
+    </com.example.smalllee.myapplication.view.MainLayout>
     <com.example.smalllee.myapplication.MyScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
@@ -35,21 +41,25 @@
         android:paddingLeft="10dp"
         android:scrollbars="none"
         >
-        <LinearLayout
-            android:id="@+id/llparent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
+            <LinearLayout
+                android:id="@+id/llparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/view_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="#00f0f0"
+                    android:gravity="center"
+                    android:text="下单View"
+                    android:textSize="30sp" />
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="#00f0f0"
-                android:text="下单View"
-                android:textSize="30sp"
-                android:gravity="center"
-
+                android:layout_height="30dp"
+                android:text="增值服务title"
+                android:background="#9e9e9e"
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -153,6 +163,7 @@
                 android:text="条目15"
                 android:gravity="center"
                 android:background="#ff0000"/>
-        </LinearLayout>
+            </LinearLayout>
+
     </com.example.smalllee.myapplication.MyScrollView>
 </RelativeLayout>

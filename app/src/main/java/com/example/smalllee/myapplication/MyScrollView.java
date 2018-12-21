@@ -2,6 +2,8 @@ package com.example.smalllee.myapplication;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.ScrollView;
 
 /**
@@ -9,10 +11,11 @@ import android.widget.ScrollView;
  */
 
 public class MyScrollView extends ScrollView {
+    private static final String TAG = "MyScrollView";
     public MyScrollView(Context context) {
         this(context,null);
     }
-
+    private int topPosition;
     public ScrollChangedListener mListener;
     public interface ScrollChangedListener{
         void onScollChanged(int t);
@@ -30,5 +33,20 @@ public class MyScrollView extends ScrollView {
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
         mListener.onScollChanged(t);
+    }
+
+    public void setTopPosition(int topPosition) {
+        this.topPosition = topPosition;
+        Log.d(TAG, "setTopPosition: " + topPosition);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        float y = ev.getY();
+        Log.d(TAG, "dispatchTouchEvent: " + y);
+        if (y < topPosition) {
+            return false;
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }
