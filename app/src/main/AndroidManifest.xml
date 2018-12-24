@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smalllee.myapplication">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".CustomApplication"
         android:allowBackup="true"
@@ -12,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.example.smalllee.myapplication.CutomModule"
-            android:value="GlideModule"/>
-        <activity android:name=".activity.GlideActivity">
+
+        <!-- <meta-data android:name="com.example.smalllee.myapplication.CutomModule" -->
+        <!-- android:value="GlideModule"/> -->
+        <activity android:name=".activity.OkhttpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +30,9 @@
         <activity android:name=".MVPActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".EventBus2Activity" />
-        <activity android:name=".activity.EventBusActivity"></activity>
+        <activity android:name=".activity.EventBusActivity" />
+        <activity android:name=".activity.GlideActivity" />
+        <activity android:name=".activity.VolleyActivity"></activity>
     </application>
 
 </manifest>
