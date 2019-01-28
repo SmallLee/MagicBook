@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.smalllee.myapplication.view.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.smalllee.myapplication.view.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,20 @@
     tools:context=".ScreenActivity">
     <TextView
         android:id="@+id/tv"
-        android:layout_width="1040px"
-        android:layout_height="50px"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutPercentWidth="0.8"
+        app:layoutPercentHeight="0.2"
         android:background="#f00"
         />
     <TextView
-        android:layout_width="500px"
-        android:layout_height="500px"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/tv"
+        app:layoutPercentWidth="0.5"
+        app:layoutPercentHeight="0.5"
         android:background="#f00"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50px"
         />
-</com.example.smalllee.myapplication.view.AutoRelativeLayout>
+</com.example.smalllee.myapplication.view.PercentRelativeLayout>
