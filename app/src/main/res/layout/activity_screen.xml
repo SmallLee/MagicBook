@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.smalllee.myapplication.view.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScreenActivity">
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="1040px"
+        android:layout_height="50px"
+        android:background="#f00"
+        />
+    <TextView
+        android:layout_width="500px"
+        android:layout_height="500px"
+        android:layout_below="@+id/tv"
+        android:background="#f00"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50px"
+        />
+</com.example.smalllee.myapplication.view.AutoRelativeLayout>

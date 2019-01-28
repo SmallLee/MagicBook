@@ -9,11 +9,24 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="#3b414d"
+        android:visibility="gone"
         />
     <com.example.smalllee.myapplication.view.ArcView
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="100dp"
+        android:visibility="gone"
         />
-
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="time"
+        android:text="计算时差"
+        />
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_below="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
