@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 import com.example.smalllee.myapplication.util.UIUtil;
 
 /**
- * 描述：自适应px的相对布局
+ * 描述：自适应的相对布局
  * @author Create by lxn on 2019/1/28
  */
 public class AutoRelativeLayout extends RelativeLayout {

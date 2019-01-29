@@ -3,6 +3,7 @@ package com.example.smalllee.myapplication.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -13,6 +14,7 @@ import com.example.smalllee.myapplication.R;
  * @author Create by lxn on 2019/1/28
  */
 public class PercentRelativeLayout extends RelativeLayout {
+    private static final String TAG = "PercentRelativeLayout";
     public PercentRelativeLayout(Context context) {
         super(context);
     }
@@ -23,11 +25,14 @@ public class PercentRelativeLayout extends RelativeLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
             LayoutParams layoutParams = (LayoutParams) child.getLayoutParams();
-            layoutParams.width = (int) (layoutParams.width * layoutParams.getPercentWidth());
-            layoutParams.height= (int) (layoutParams.height* layoutParams.getPercentHeight());
+            layoutParams.width = (int) (widthSize * layoutParams.getPercentWidth());
+            layoutParams.height= (int) (heightSize * layoutParams.getPercentHeight());
+            Log.d(TAG, "LayoutParams onMeasure: " + layoutParams.width + "" + layoutParams.height);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
@@ -45,11 +50,17 @@ public class PercentRelativeLayout extends RelativeLayout {
             return percentHeight;
         }
 
-        public LayoutParams(Context c, AttributeSet attrs) {
+        LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
-            TypedArray typedArray = c.obtainStyledAttributes(attrs,R.styleable.Percent);
-            percentWidth = typedArray.getFloat(R.styleable.Percent_layoutPercentWidth,0);
-            percentHeight = typedArray.getFloat(R.styleable.Percent_layoutPercentWidth,0);
+            TypedArray typedArray = c.obtainStyledAttributes(attrs,R.styleable.PercentRelativeLayout);
+            percentWidth = typedArray.getFloat(R.styleable.PercentRelativeLayout_layoutPercentWidth,0);
+            percentHeight = typedArray.getFloat(R.styleable.PercentRelativeLayout_layoutPercentHeight,0);
+            Log.d(TAG, "LayoutParams: percentWidth" + percentWidth + "---" +  percentHeight);
         }
+    }
+
+    @Override
+    public RelativeLayout.LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new LayoutParams(getContext(),attrs);
     }
 }

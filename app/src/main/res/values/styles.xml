@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <declare-styleable name="Percent">
+    <declare-styleable name="PercentRelativeLayout">
         <attr name="layoutPercentWidth" format="float"/>
         <attr name="layoutPercentHeight" format="float"/>
     </declare-styleable>
