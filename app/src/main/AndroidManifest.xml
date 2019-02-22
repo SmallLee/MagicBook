@@ -17,7 +17,7 @@
 
         <!-- <meta-data android:name="com.example.smalllee.myapplication.CutomModule" -->
         <!-- android:value="GlideModule"/> -->
-        <activity android:name=".ScreenActivity">
+        <activity android:name=".activity.SingleTopActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +35,8 @@
         <activity android:name=".activity.VolleyActivity" />
         <activity android:name=".activity.OkHttpActivity" />
         <activity android:name=".activity.ArcViewActivity" />
-        <activity android:name=".activity.CountDownActivity"></activity>
+        <activity android:name=".activity.CountDownActivity" />
+        <activity android:name=".ScreenActivity"></activity>
     </application>
 
 </manifest>
