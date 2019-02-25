@@ -36,7 +36,8 @@
         <activity android:name=".activity.OkHttpActivity" />
         <activity android:name=".activity.ArcViewActivity" />
         <activity android:name=".activity.CountDownActivity" />
-        <activity android:name=".ScreenActivity"></activity>
+        <activity android:name=".ScreenActivity" />
+        <activity android:name=".activity.TestFieldActivity"></activity>
     </application>
 
 </manifest>
