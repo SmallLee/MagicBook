@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <import type="com.example.smalllee.myapplication.R"/>
+        <variable
+            name="dataBean"
+            type="com.example.smalllee.myapplication.pojo.DataBean"/>
+        <variable
+            name="adater"
+            type="com.example.smalllee.myapplication.adapter.BindAdapter"/>
+        <variable
+            name="position"
+            type="int"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        >
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{dataBean.address}"
+            />
+        <TextView
+            android:id="@+id/tv_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_address"
+            android:text="@{String.valueOf(dataBean.height)}"
+            />
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            app:resId="@{dataBean.isCat ? R.mipmap.cat : R.mipmap.ic_launcher}"
+            android:onClick="@{()-> adater.click(dataBean,position)}"
+            />
+    </RelativeLayout>
+</layout>

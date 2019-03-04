@@ -17,7 +17,7 @@
 
         <!-- <meta-data android:name="com.example.smalllee.myapplication.CutomModule" -->
         <!-- android:value="GlideModule"/> -->
-        <activity android:name=".activity.SingleTopActivity">
+        <activity android:name=".aop.AOPActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +37,10 @@
         <activity android:name=".activity.ArcViewActivity" />
         <activity android:name=".activity.CountDownActivity" />
         <activity android:name=".ScreenActivity" />
-        <activity android:name=".activity.TestFieldActivity"></activity>
+        <activity android:name=".activity.TestFieldActivity" />
+        <activity android:name=".activity.SingleTopActivity" />
+        <activity android:name=".activity.DataBindingActivity" />
+        <activity android:name=".activity.LoadDataWithDataBindingActivity"></activity>
     </application>
 
 </manifest>
