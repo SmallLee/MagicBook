@@ -7,6 +7,13 @@ import android.view.View;
 
 import com.example.smalllee.myapplication.R;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class OkHttpActivity extends AppCompatActivity {
     public static final String URL = "https://www.baidu.com";
     private static final String TAG = "OkHttpActivity";
@@ -20,14 +27,14 @@ public class OkHttpActivity extends AppCompatActivity {
 //        String result = StringUtil.toDBC("\u00a0");
         String result ="\u00a0";
         Log.d(TAG, "syncRequest:" + result.replace("\u00a0","") + "--");
-//        OkHttpClient client = new OkHttpClient.Builder().build();
-//        Request request = new Request.Builder()
-//                .url(URL).build();
-//        Call call = client.newCall(request);
-//        try {
-//            Response response = call.execute();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        OkHttpClient client = new OkHttpClient.Builder().build();
+        Request request = new Request.Builder()
+                .url(URL).build();
+        Call call = client.newCall(request);
+        try {
+            Response response = call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
