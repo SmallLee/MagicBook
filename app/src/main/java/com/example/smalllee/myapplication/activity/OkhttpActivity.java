@@ -11,11 +11,9 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 public class OkHttpActivity extends AppCompatActivity {
     public static final String URL = "https://www.baidu.com";
-    private static final String TAG = "OkHttpActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,18 +21,16 @@ public class OkHttpActivity extends AppCompatActivity {
     }
 
     public void syncRequest(View view) {
-      Thread thread = new Thread(new CallRunnable());
-      thread.start();
+       new Thread(new CallRunnable()).start();
     }
     class CallRunnable implements Runnable{
         @Override
         public void run() {
             OkHttpClient client = new OkHttpClient.Builder().build();
-            Request request = new Request.Builder()
-                    .url(URL).build();
+            Request request = new Request.Builder().url(URL).build();
             Call call = client.newCall(request);
             try {
-                Response response = call.execute();
+                call.execute();
             } catch (IOException e) {
                 e.printStackTrace();
             }
