@@ -1,8 +1,7 @@
 package com.example.smalllee.myapplication.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.smalllee.myapplication.R;
@@ -10,7 +9,6 @@ import com.example.smalllee.myapplication.R;
 import java.io.IOException;
 
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -25,14 +23,21 @@ public class OkHttpActivity extends AppCompatActivity {
     }
 
     public void syncRequest(View view) {
-        OkHttpClient client = new OkHttpClient.Builder().build();
-        Request request = new Request.Builder()
-                .url(URL).build();
-        Call call = client.newCall(request);
-        try {
-            Response response = call.execute();
-        } catch (IOException e) {
-            e.printStackTrace();
+      Thread thread = new Thread(new CallRunnable());
+      thread.start();
+    }
+    class CallRunnable implements Runnable{
+        @Override
+        public void run() {
+            OkHttpClient client = new OkHttpClient.Builder().build();
+            Request request = new Request.Builder()
+                    .url(URL).build();
+            Call call = client.newCall(request);
+            try {
+                Response response = call.execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
